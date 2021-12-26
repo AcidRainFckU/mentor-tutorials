@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #d3d3d3;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+}
+
+.profile_block {
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  min-width: 330px;
+}
+
+p:first-child {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
