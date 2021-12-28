@@ -5,13 +5,15 @@ function App() {
   let email = "";
   let password = "";
   function changeInputs(event) {
-    event.target.type == "text"
-      ? (email = event.target.value.trim())
-      : (password = event.target.value.trim());
+    if (event.target.type == "text") {
+      email = event.target.value.trim();
+    } else {
+      password = event.target.value.trim();
+    }
   }
   function handleSubmit(event) {
     event.preventDefault();
-    if (email === "" || password === "") {
+    if (!email || !password) {
       alert("Поля не должны быть пустыми");
     } else {
       event.target.reset();
