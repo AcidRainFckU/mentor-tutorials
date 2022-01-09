@@ -1,92 +1,13 @@
 import React from "react";
 import EmptyBlock from "./components/EmptyBlock";
 import Phrase from "./components/Phrase";
+import adjectivesArr from "./adjectivesArr";
+import nounsArr from "./nounsArr";
 
 import "./App.css";
 
 const App = () => {
-  const [phrases, setShowPhrases] = React.useState([]);
-
-  const adjectivesArr = [
-    "абсолютный",
-
-    "адский",
-
-    "азартный",
-
-    "активный",
-
-    "ангельский",
-
-    "астрономический",
-
-    "баснословный",
-
-    "безбожный",
-
-    "безбрежный",
-
-    "безвозвратный",
-
-    "безграничный",
-
-    "бездонный",
-
-    "бездушный",
-
-    "безжалостный",
-
-    "замечательно",
-
-    "замечательный",
-
-    "записной",
-
-    "запредельный",
-
-    "заядлый",
-
-    "звериный",
-
-    "зверский",
-
-    "зеленый",
-
-    "злой",
-
-    "злостный",
-
-    "значительный",
-
-    "неоспоримый",
-
-    "неотразимый",
-
-    "неоценимый",
-
-    "непередаваемый",
-  ];
-  const nounsArr = [
-    "лгун",
-
-    "день",
-
-    "конь",
-
-    "олень",
-
-    "человек",
-
-    "программист",
-
-    "ребёнок",
-
-    "конец",
-
-    "город",
-
-    "дурак",
-  ];
+  const [phrases, setPhrases] = React.useState([]);
 
   function createPhrase() {
     const phrase = `${
@@ -94,16 +15,33 @@ const App = () => {
     } ${
       adjectivesArr[Math.floor(Math.random() * (adjectivesArr.length - 1))]
     } ${nounsArr[Math.floor(Math.random() * (nounsArr.length - 1))]}`;
-    setShowPhrases([phrase, ...phrases]);
+    setPhrases([phrase, ...phrases]);
   }
 
   function clearList() {
-    setShowPhrases([]);
+    setPhrases([]);
   }
 
+  if (phrases.length > 0) {
+    return (
+      <div className="wrapper">
+        <div className="list">
+          {phrases.map((phrase, index) => (
+            <Phrase key={index} text={phrase} />
+          ))}
+        </div>
+        <button onClick={createPhrase} className="btn btn_generate">
+          Сгенерировать
+        </button>
+        <button onClick={clearList} className="btn btn_clear">
+          Очистить
+        </button>
+      </div>
+    );
+  }
   return (
     <div className="wrapper">
-      {phrases.length ? <Phrase text={phrases} /> : <EmptyBlock />}
+      <EmptyBlock />
       <button onClick={createPhrase} className="btn btn_generate">
         Сгенерировать
       </button>
