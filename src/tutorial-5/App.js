@@ -1,8 +1,7 @@
 import React from "react";
 import EmptyBlock from "./components/EmptyBlock";
 import Phrase from "./components/Phrase";
-import adjectivesArr from "./adjectivesArr";
-import nounsArr from "./nounsArr";
+import { adjectivesArr, nounsArr } from "./adjectivesArr";
 
 import "./App.css";
 
@@ -22,26 +21,17 @@ const App = () => {
     setPhrases([]);
   }
 
-  if (phrases.length > 0) {
-    return (
-      <div className="wrapper">
+  return (
+    <div className="wrapper">
+      {phrases.length ? (
         <div className="list">
           {phrases.map((phrase, index) => (
             <Phrase key={index} text={phrase} />
           ))}
         </div>
-        <button onClick={createPhrase} className="btn btn_generate">
-          Сгенерировать
-        </button>
-        <button onClick={clearList} className="btn btn_clear">
-          Очистить
-        </button>
-      </div>
-    );
-  }
-  return (
-    <div className="wrapper">
-      <EmptyBlock />
+      ) : (
+        <EmptyBlock />
+      )}
       <button onClick={createPhrase} className="btn btn_generate">
         Сгенерировать
       </button>

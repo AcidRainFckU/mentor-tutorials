@@ -58,4 +58,26 @@ const adjectivesArr = [
   "непередаваемый",
 ];
 
-export default adjectivesArr;
+const nounsArr = [
+  "лгун",
+
+  "день",
+
+  "конь",
+
+  "олень",
+
+  "человек",
+
+  "программист",
+
+  "ребёнок",
+
+  "конец",
+
+  "город",
+
+  "дурак",
+];
+
+export { adjectivesArr, nounsArr };
